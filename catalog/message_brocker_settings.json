@@ -1,0 +1,11 @@
+{
+    "broker": "mqtt.eclipseprojects.io",
+    "test_broker":"localhost",
+    "port": 1883,
+    "baseTopic": {"humidity":["humidity","humidity_control"],
+                "temperature":["temperature","temperature_control"],
+                "statistic_humidity":["statistic_humidity","statistic_humidity_control"],
+                "statistic_temperature":["statistic_temperature","statistic_temperature_control"],
+                "feeding":["timer","feeding_control"],
+                "TS_adapter":["TS_humidity","TS_Temperature","TS_humidity_pred","TS_Temperature_pred"]}
+}

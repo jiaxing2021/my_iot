@@ -1,0 +1,159 @@
+{
+	"coltures": [{
+			"Name": "Watermelon",
+			"Optimal Temperature range": "20-30 degree",
+			"Optimal Planting period": [4, 5, 6, 7],
+			"Hypotetic colture harvest": "100-120 days"
+		},
+		{
+			"Name": "Asparagus",
+			"Optimal Temperature range": "20-25 degree",
+			"Optimal Planting period": [3, 4, 5, 6, 7, 8, 9],
+			"Hypotetic colture harvest": "2 years"
+		},
+		{
+			"Name": "Basil",
+			"Optimal Temperature range": "15-20 degree",
+			"Optimal Planting period": [4, 5, 6, 7, 8, 9],
+			"Hypotetic colture harvest": "25-50 days"
+		},
+		{
+			"Name": "Artichoke",
+			"Optimal Temperature range": "25-30 degree",
+			"Optimal Planting period": [7, 8, 9, 10],
+			"Hypotetic colture harvest": "100-150 days"
+		},
+		{
+			"Name": "Cauliflower",
+			"Optimal Temperature range": "10-25 degree",
+			"Optimal Planting period": [5, 6, 7, 8, 9, 10, 11, 12, 1, 2],
+			"Hypotetic colture harvest": "70-130 days"
+		},
+		{
+			"Name": "Savoy cabbage",
+			"Optimal Temperature range": "8-25 degree",
+			"Optimal Planting period": [5, 6, 7, 8, 9, 10, 11, 12, 1, 2],
+			"Hypotetic colture harvest": "70-130 days"
+		},
+		{
+			"Name": "Cucumber",
+			"Optimal Temperature range": "15-30 degree",
+			"Optimal Planting period": [4, 5, 6, 7, 8, 9],
+			"Hypotetic colture harvest": "45-65 days"
+		},
+		{
+			"Name": "Radish",
+			"Optimal Temperature range": "15-20 degree",
+			"Optimal Planting period": [8, 9, 10, 11, 12, 1, 2],
+			"Hypotetic colture harvest": "60-80 years"
+		},
+		{
+			"Name": "Chicory",
+			"Optimal Temperature range": "15-20 degree",
+			"Optimal Planting period": [8, 9, 10, 11, 12, 1, 2],
+			"Hypotetic colture harvest": "60-80 years"
+		},
+		{
+			"Name": "Onion",
+			"Optimal Temperature range": "12-25 degree",
+			"Optimal Planting period": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+			"Hypotetic colture harvest": "120-180 days"
+		},
+		{
+			"Name": "Bean",
+			"Optimal Temperature range": "15-25 degree",
+			"Optimal Planting period": [3, 4, 5, 6, 7, 8, 9],
+			"Hypotetic colture harvest": "45-60 days"
+		},
+		{
+			"Name": "Fennel",
+			"Optimal Temperature range": "14-22 degree",
+			"Optimal Planting period": [8, 9, 10, 11],
+			"Hypotetic colture harvest": "75-150 days"
+		},
+		{
+			"Name": "Strawberry",
+			"Optimal Temperature range": "8-20 degree",
+			"Optimal Planting period": [2, 3, 4, 5, 6, 9, 10],
+			"Hypotetic colture harvest": "90-120 days"
+		},
+		{
+			"Name": "Lettuce",
+			"Optimal Temperature range": "8-20 degree",
+			"Optimal Planting period": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+			"Hypotetic colture harvest": "35-75 days"
+		},
+		{
+			"Name": "Corn",
+			"Optimal Temperature range": "18-20 degree",
+			"Optimal Planting period": [4, 5, 6, 7, 8],
+			"Hypotetic colture harvest": "100-150 days"
+		},
+		{
+			"Name": "Eggplant",
+			"Optimal Temperature range": "20-35 degree",
+			"Optimal Planting period": [3, 4, 5, 6, 7, 8],
+			"Hypotetic colture harvest": "50-70 days"
+		},
+		{
+			"Name": "Cantaloupe melon",
+			"Optimal Temperature range": "24-35 degree",
+			"Optimal Planting period": [4, 5, 6],
+			"Hypotetic colture harvest": "70-130 days"
+		},
+		{
+			"Name": "Bell pepper",
+			"Optimal Temperature range": "18-35 degree",
+			"Optimal Planting period": [3, 4, 5, 6, 7, 8],
+			"Hypotetic colture harvest": "120-150 days"
+		},
+		{
+			"Name": "Pea",
+			"Optimal Temperature range": "8-24 degree",
+			"Optimal Planting period": [11, 12],
+			"Hypotetic colture harvest": "50-65 days"
+		},
+		{
+			"Name": "Tomato",
+			"Optimal Temperature range": "16-35 degree",
+			"Optimal Planting period": [3, 4, 5, 6, 7],
+			"Hypotetic colture harvest": "60-80 years"
+		},
+		{
+			"Name": "Leek",
+			"Optimal Temperature range": "12-25 degree",
+			"Optimal Planting period": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+			"Hypotetic colture harvest": "100-120 years"
+		},
+		{
+			"Name": "Parsley",
+			"Optimal Temperature range": "13-20 degree",
+			"Optimal Planting period": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+			"Hypotetic colture harvest": "25-50 days"
+		},
+		{
+			"Name": "Celery",
+			"Optimal Temperature range": "16-21 degree",
+			"Optimal Planting period": [3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+			"Hypotetic colture harvest": "150-180 days"
+		},
+		{
+			"Name": "Spinach",
+			"Optimal Temperature range": "7-24 degree",
+			"Optimal Planting period": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+			"Hypotetic colture harvest": "35-50 days"
+		},
+		{
+			"Name": "Pumpkin",
+			"Optimal Temperature range": "20-35 degree",
+			"Optimal Planting period": [4, 5, 6],
+			"Hypotetic colture harvest": "60-90 days"
+		},
+		{
+			"Name": "Zuchini",
+			"Optimal Temperature range": "21-35 degree",
+			"Optimal Planting period": [3, 4, 5, 6, 7, 8, 9],
+			"Hypotetic colture harvest": "25-40 days"
+		}
+	]
+}

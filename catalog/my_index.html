@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<header>
+    <title>Catalog</title>
+    <head>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+</header>
+
+<body>
+    <h1>Add Farm</h1>
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-xl-4 col-xs-12 mx-auto my-3">
+                <form onsubmit="sendPOSTrequest()">
+                    <div class="form-group">
+                        <label for="deviceID">Farm ID</label>
+                        <br>
+                        <input type="text" class="form-control" id="deviceID">
+                        <br>
+                    </div>
+                    <div class="form-group">
+                        <label for="deviceName">Farm name</label>
+                        <br>
+                        <input type="text" class="form-control" id="deviceName">
+                        <br>
+                        <br>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <h1>Change Farm</h1>
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-xl-4 col-xs-12 mx-auto my-3">
+                <form onsubmit="sendPUTrequest()">
+                    <div class="form-group">
+                        <label for="currentFarmID">Farm ID</label>
+                        <br>
+                        <input type="text" class="form-control" id="currentFarmID">
+                        <br>
+                        <br>
+                    </div>
+                    <button type="submit" class="btn btn-primary">update</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-xl-4 col-xs-12 mx-auto my-3">
+                <form onsubmit="sendPUTrequestActivatedFarm()">
+                    <div class="form-group">
+                        <label for="activatedFarmID">Activated Farm ID</label>
+                        <br>
+                        <input type="text" class="form-control" id="activatedFarmID">
+                        <br>
+                        <br>
+                    </div>
+                    <button type="submit" class="btn btn-primary">update</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <h1>Token</h1>
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-xl-4 col-xs-12 mx-auto my-3">
+                <form onsubmit="sendPUTrequestToken()">
+                    <div class="form-group">
+                        <label for="Token">Token</label>
+                        <br>
+                        <input type="text" class="form-control" id="Token">
+                        <br>
+                    </div>
+                    <button type="submit" class="btn btn-primary">update</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <h1>timer</h1>
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-xl-4 col-xs-12 mx-auto my-3">
+                <form onsubmit="sendPUTrequestTimer()">
+                    <div class="form-group">
+                        <label for="Timer">Timer</label>
+                        <br>
+                        <input type="text" class="form-control" id="Timer">
+                        <br>
+                    </div>
+                    <button type="submit" class="btn btn-primary">update</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <h1>Sensor settings</h1>
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-xl-4 col-xs-12 mx-auto my-3">
+                <form onsubmit="sendPUTrequestSensor()">
+                    <div class="form-group">
+                        <label for="ID">Setting for Farm ID</label>
+                        <br>
+                        <input type="text" class="form-control" id="ID">
+                        <br>
+                        <label for="SensorNum">sensor number</label>
+                        <br>
+                        <input type="text" class="form-control" id="SensorNum">
+                        <br>
+                        <label for="SensorPort">sensor ports</label>
+                        <br>
+                        <input type="text" class="form-control" id="SensorPort">
+                        <br>
+                    </div>
+                    <button type="submit" class="btn btn-primary">update</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <h1>Delete Farm</h1>
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-xl-4 col-xs-12 mx-auto my-3">
+                <form onsubmit="sendDELETErequestFarm()">
+                    <div class="form-group">
+                        <label for="deletedID">Farm ID to be deleted</label>
+                        <br>
+                        <input type="text" class="form-control" id="deletedID">
+                        <br>
+                        <br>
+                    </div>
+                    <button type="submit" class="btn btn-primary">delete</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script>
+        function sendPOSTrequest() {
+            event.preventDefault();
+            deviceID = $("#deviceID").val();
+            deviceName = $("#deviceName").val();
+            $.ajax({
+                type: "POST",
+                url: "/addFarm",
+                contentType: "application/json",
+                data: JSON.stringify({
+                    farmID: deviceID,
+                    farmName: deviceName
+                }),
+                dataType: "json",
+            });
+        }
+
+        function sendPUTrequest() {
+            event.preventDefault();
+            currentFarmID = $("#currentFarmID").val();
+            $.ajax({
+                type: "PUT",
+                url: "/change",
+                contentType: "application/json",
+                data: JSON.stringify({
+                    currentFarmID: currentFarmID,
+                }),
+                dataType: "json",
+            });
+        }
+        function sendPUTrequestActivatedFarm() {
+            event.preventDefault();
+            activatedFarmID = $("#activatedFarmID").val();
+            $.ajax({
+                type: "PUT",
+                url: "/activatedFarm",
+                contentType: "application/json",
+                data: JSON.stringify({
+                    activatedFarmID: activatedFarmID,
+                }),
+                dataType: "json",
+            });
+        }
+        function sendPUTrequestToken() {
+            event.preventDefault();
+            Token = $("#Token").val();
+            $.ajax({
+                type: "PUT",
+                url: "/token",
+                contentType: "application/json",
+                data: JSON.stringify({
+                    Token: Token,
+                }),
+                dataType: "json",
+            });
+        }
+
+        function sendPUTrequestTimer() {
+            event.preventDefault();
+            Timer = $("#Timer").val();
+            $.ajax({
+                type: "PUT",
+                url: "/timer",
+                contentType: "application/json",
+                data: JSON.stringify({
+                    Timer: Timer,
+                }),
+                dataType: "json",
+            });
+        }
+
+        function sendPUTrequestSensor() {
+            event.preventDefault();
+            ID = $("#ID").val();
+            SensorNum = $("#SensorNum").val();
+            SensorPort = $("#SensorPort").val();
+            $.ajax({
+                type: "PUT",
+                url: "/sensor",
+                contentType: "application/json",
+                data: JSON.stringify({
+                    ID:ID,
+                    SensorNum: SensorNum,
+                    SensorPort: SensorPort,
+                }),
+                dataType: "json",
+            });
+        }
+        function sendDELETErequestFarm() {
+            event.preventDefault();
+            deletedID = $("#deletedID").val();
+            $.ajax({
+                type: "DELETE",
+                url: "/deleteFarm",
+                contentType: "application/json",
+                data: JSON.stringify({
+                    deletedID: deletedID,
+                }),
+                dataType: "json",
+            });
+        }
+    </script>
+</body>
