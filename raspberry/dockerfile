@@ -1,11 +1,21 @@
 # FROM python:3.13.0a4-slim-bookworm
-FROM python:3.8-slim-bullseye
+FROM python:3
+# FROM python:3.8-slim-bullseye
+# FROM balenalib/raspberry-pi-debian-python:latest
+# FROM balenalib/raspberrypi4-64-fedora-python:latest
 # FROM python:3.11
 
 COPY . .
 # CMD ["python","./get-pip.py"]
 # RUN pip3 install torch
-RUN pip3 install cherrypy requests adafruit_dht board RPi
-CMD ["python","./main_raspberry.py"]
+# RUN apt-get install python3-rpi.gpio
 
-# CMD ["bash"]
+RUN python3 -m pip install adafruit-circuitpython-dht
+RUN pip3 install cherrypy requests 
+RUN pip3 install python-etcd
+RUN pip3 install paho-mqtt==1.6.1
+RUN pip3 install rpi.gpio
+# RUN pip3 install board
+CMD ["python3","./main_raspberry.py"]
+
+# CMD ["bash"]s

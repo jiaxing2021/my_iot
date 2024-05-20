@@ -21,7 +21,7 @@ cherrypy.engine.start()
 
 t = 30
 def checkoffline(webport):
-    baseUri = "http://0.0.0.0:"
+    baseUri = "http://192.168.1.14:"
     uri = baseUri + str(webport) + '/online'
     req = requests.get(uri)
     print(req)

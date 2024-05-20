@@ -1,6 +1,7 @@
 {
     "broker": "mqtt.eclipseprojects.io",
-    "test_broker":"localhost",
+    "local_broker":"localhost",
+    "test_broker":"192.168.1.14",
     "port": 1883,
     "baseTopic": {"humidity":["humidity","humidity_control"],
                 "temperature":["temperature","temperature_control"],

@@ -116,7 +116,7 @@ class catalog:
                     with open('currentFarm.json','w') as file:
                         json.dump(dic, file)
                         # restart TS_adapter
-                        TS_uri = "http://0.0.0.0:8080/restart"
+                        TS_uri = "http://192.168.1.14:8080/restart"
                         res = requests.put(TS_uri)
             # change token
             if command == 'token':

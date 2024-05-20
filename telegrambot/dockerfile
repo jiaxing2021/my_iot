@@ -5,7 +5,7 @@ FROM python:3.8-slim-bullseye
 COPY . .
 # CMD ["python","./get-pip.py"]
 # RUN pip3 install torch
-RUN pip3 install cherrypy requests telebot
+RUN pip3 install cherrypy requests telepot
 CMD ["python","./main_telebot.py"]
 
 # CMD ["bash"]

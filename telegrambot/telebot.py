@@ -14,13 +14,13 @@ class RESTBot:
                                'callback_query':self.on_callback_query}).run_as_thread()
 
         # retrive information about current farm
-        currentFarmUri = "http://0.0.0.0:8888/getCurrentFarm"
+        currentFarmUri = "http://192.168.1.14:8888/getCurrentFarm"
         req = requests.get(currentFarmUri)
         currentFarmJson = req.json()
         self.currentFarmID = currentFarmJson['CurrentFarm'][0]['farmID']
         self.currentFarmName = currentFarmJson['CurrentFarm'][0]['farmName']
 
-        ActivatedFarmUri = "http://0.0.0.0:8888/getActivatedFarm"
+        ActivatedFarmUri = "http://192.168.1.14:8888/getActivatedFarm"
         req = requests.get(ActivatedFarmUri)
         ActivatedFarmList = req.json()['e']
 
@@ -30,7 +30,7 @@ class RESTBot:
                 break
 
         # regster suggested culture in catalog
-        getSuggestCultureUri = "http://0.0.0.0:8888/getSuggestedCulture"
+        getSuggestCultureUri = "http://192.168.1.14:8888/getSuggestedCulture"
         req = requests.get(getSuggestCultureUri)
         SuggestCultureJson = req.json()
         self.cultureList = SuggestCultureJson['coltures']
@@ -42,7 +42,7 @@ class RESTBot:
         content_type, chat_type, chat_ID = telepot.glance(msg)
         
         # regster chatID in catalog
-        registrationChatID_uri = "http://0.0.0.0:8888/addChatID"
+        registrationChatID_uri = "http://192.168.1.14:8888/addChatID"
         chatIDData = {'chatID':chat_ID}
         response = requests.post(registrationChatID_uri,json = chatIDData)
 
@@ -71,7 +71,7 @@ class RESTBot:
 
         if query_data == "getinfo":
             # retrive temperature
-            temperatureUri = "http://0.0.0.0:8888/getTemperature"
+            temperatureUri = "http://192.168.1.14:8888/getTemperature"
             req = requests.get(temperatureUri)
             temperatureList = req.json()['e']
             for i in temperatureList:
@@ -80,7 +80,7 @@ class RESTBot:
                     break
 
             # retrive humidity
-            humidityUri = "http://0.0.0.0:8888/getHumidity"
+            humidityUri = "http://192.168.1.14:8888/getHumidity"
             req = requests.get(humidityUri)
             humidityList = req.json()['e']
             for i in humidityList:
@@ -89,7 +89,7 @@ class RESTBot:
                     break
 
             # retrive predicted temperature
-            temperaturePredUri = "http://0.0.0.0:8888/getTemperaturePred"
+            temperaturePredUri = "http://192.168.1.14:8888/getTemperaturePred"
             req = requests.get(temperaturePredUri)
             temperaturePredList = req.json()['e']
             for i in temperaturePredList:
@@ -98,7 +98,7 @@ class RESTBot:
                     break
 
             # retrive predicted humidity
-            humidityPredUri = "http://0.0.0.0:8888/getHumidityPred"
+            humidityPredUri = "http://192.168.1.14:8888/getHumidityPred"
             req = requests.get(humidityPredUri)
             humidityPredList = req.json()['e']
             for i in humidityPredList:
@@ -107,7 +107,7 @@ class RESTBot:
                     break
 
             # retrive mechanism status
-            statusUri = "http://0.0.0.0:8888/getMechanismStatus"
+            statusUri = "http://192.168.1.14:8888/getMechanismStatus"
             req = requests.get(statusUri)
             statusList = req.json()['e']
             statusList = statusList[::-1]
@@ -132,7 +132,7 @@ class RESTBot:
         
         elif query_data == "getFarmList":
             # retrive activated farm list
-            FarmListUri = "http://0.0.0.0:8888/getActivatedFarm"
+            FarmListUri = "http://192.168.1.14:8888/getActivatedFarm"
             req = requests.get(FarmListUri)
             FarmList = req.json()['e']
             numFarm = len(FarmList)
@@ -146,7 +146,7 @@ class RESTBot:
 
         elif query_data == "getService":
             # retrive service list
-            ServiceListUri = "http://0.0.0.0:8888/getServiceList"
+            ServiceListUri = "http://192.168.1.14:8888/getServiceList"
             req = requests.get(ServiceListUri)
             ServiceList = req.json()['e']
             numService = len(ServiceList)
@@ -182,7 +182,7 @@ class RESTBot:
       
         else:
             if query_data == "Wateron":
-                baseUri = "http://0.0.0.0:"
+                baseUri = "http://192.168.1.14:"
                 webport = 2500 + self.serviceID
                 uri = baseUri + str(webport) + '/on_wartering'
                 req = requests.put(uri)
@@ -191,7 +191,7 @@ class RESTBot:
                 self.bot.sendMessage(chat_ID, text=f"{query_data[0:5]}ing mechanism is switched {query_data[5:]} at {timestamp}")
 
             elif query_data == "Wateroff":
-                baseUri = "http://0.0.0.0:"
+                baseUri = "http://192.168.1.14:"
                 webport = 2500 + self.serviceID
                 uri = baseUri + str(webport) + '/off_wartering'
                 req = requests.put(uri)
@@ -200,7 +200,7 @@ class RESTBot:
                 self.bot.sendMessage(chat_ID, text=f"{query_data[0:5]}ing mechanism is switched {query_data[5:]} at {timestamp}")
 
             elif query_data == " Heaton":
-                baseUri = "http://0.0.0.0:"
+                baseUri = "http://192.168.1.14:"
                 webport = 2500 + self.serviceID
                 uri = baseUri + str(webport) + '/on_heating_off_cooling'
                 req = requests.put(uri)
@@ -209,7 +209,7 @@ class RESTBot:
                 self.bot.sendMessage(chat_ID, text=f"{query_data[0:5]}ing mechanism is switched {query_data[5:]} at {timestamp}")
 
             elif query_data == " Coolon":
-                baseUri = "http://0.0.0.0:"
+                baseUri = "http://192.168.1.14:"
                 webport = 2500 + self.serviceID
                 uri = baseUri + str(webport) + '/off_heating_on_cooling'
                 req = requests.put(uri)
@@ -217,7 +217,7 @@ class RESTBot:
                 timestamp = time.ctime(seconds)
                 self.bot.sendMessage(chat_ID, text=f"{query_data[0:5]}ing mechanism is switched {query_data[5:]} at {timestamp}")
             elif query_data == "Fertilieron":
-                baseUri = "http://0.0.0.0:"
+                baseUri = "http://192.168.1.14:"
                 webport = 2500 + self.serviceID
                 uri = baseUri + str(webport) + '/on_feeding'
                 req = requests.put(uri)
@@ -225,7 +225,7 @@ class RESTBot:
                 timestamp = time.ctime(seconds)
                 self.bot.sendMessage(chat_ID, text=f"Fertilizer mechanism is switched on at {timestamp}")
             elif query_data == "Fertilieroff":
-                baseUri = "http://0.0.0.0:"
+                baseUri = "http://192.168.1.14:"
                 webport = 2500 + self.serviceID
                 uri = baseUri + str(webport) + '/off_feeding'
                 req = requests.put(uri)

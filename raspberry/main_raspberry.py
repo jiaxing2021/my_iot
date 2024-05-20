@@ -27,7 +27,7 @@ if __name__ == "__main__":
     dht_device = []
     # check how many raspberry services existing in catalog
     try:
-        get_service_list_uri = "http://0.0.0.0:8888/getServiceList"
+        get_service_list_uri = "http://192.168.1.14:8888/getServiceList"
         response = requests.get(get_service_list_uri)
         serviceListDic = response.json()
         ServiceList = serviceListDic["e"] # return service list
@@ -57,13 +57,13 @@ if __name__ == "__main__":
     # run another main_raspberry.py to creat another raspberry service 
     # for the next activated farm
     try:
-        get_activated_farm_uri = "http://0.0.0.0:8888/getActivatedFarm"
+        get_activated_farm_uri = "http://192.168.1.14:8888/getActivatedFarm"
         response = requests.get(get_activated_farm_uri)
         farmDic = response.json()
         farmList = farmDic["e"]
         this_farm = farmList[serviceID]
 
-        get_sensor_uri = "http://0.0.0.0:8888/getSensor"
+        get_sensor_uri = "http://192.168.1.14:8888/getSensor"
         response = requests.get(get_sensor_uri)
         sensorDic = response.json()
         sensorList = sensorDic["sensors"]
@@ -74,7 +74,7 @@ if __name__ == "__main__":
         
 
         # retrive sensor port
-        get_sensor_uri = "http://0.0.0.0:8888/getSensor"
+        get_sensor_uri = "http://192.168.1.14:8888/getSensor"
         response = requests.get(get_sensor_uri)
         sensorDic = response.json()
         sensorList = sensorDic["sensors"]
@@ -86,18 +86,18 @@ if __name__ == "__main__":
             for a in range(40):
                 if sensor_setting['SensorPort'][i] == str(a):
                     print(sensor_setting['SensorPort'][i])
-                    if a == 1:
-                        dht_device.append(adafruit_dht.DHT11(board.D1))
-                    elif a== 2:
-                        dht_device.append(adafruit_dht.DHT11(board.D2))
-                    elif a== 3:
-                        dht_device.append(adafruit_dht.DHT11(board.D3))
-                    elif a== 4:
-                        dht_device.append(adafruit_dht.DHT11(board.D4))
-                    elif a == 18:
+                    if a == 18:
                         dht_device.append(adafruit_dht.DHT11(board.D18))
+                    # elif a== 2:
+                    #     dht_device.append(adafruit_dht.DHT11(board.D2))
+                    # elif a== 3:
+                    #     dht_device.append(adafruit_dht.DHT11(board.D3))
+                    # elif a== 4:
+                    #     dht_device.append(adafruit_dht.DHT11(board.D4))
+                    # elif a == 18:
+                    #     dht_device.append(adafruit_dht.DHT11(board.D18))
 
-        # print(dht_device)
+        print(dht_device)
     except:
         print("senser wrong, try again!")
         sys.exit()
@@ -122,71 +122,75 @@ if __name__ == "__main__":
     # dht_device = adafruit_dht.DHT11(board.D18)
 
     # get broker settings 
-    get_broker_uri = "http://0.0.0.0:8888/getBrocker"
+    get_broker_uri = "http://192.168.1.14:8888/getBrocker"
     res = requests.get(get_broker_uri)
     conf = res.json()
+    
+    broker=conf["test_broker"]
+    # broker = "192.168.1.14"
+    port=conf["port"]
 
     # for control part
-    broker=conf["test_broker"]
-    port=conf["port"]
+    # broker=conf["test_broker"]
+    # port=conf["port"]
     topic = conf["baseTopic"]["humidity"][0]+str(serviceID)
     humidity_pub = humidity_pub("humidity_pub"+str(serviceID),topic,broker,port)
     humidity_pub.client.start()
 
-    broker=conf["test_broker"]
-    port=conf["port"]
+    # broker=conf["test_broker"]
+    # port=conf["port"]
     topic = conf["baseTopic"]["temperature"][0]+str(serviceID)
     temperature_pub = temperature_pub("temperature_pub"+str(serviceID),topic,broker,port)
     temperature_pub.client.start()
 
-    broker_sub = conf["test_broker"]
-    port_sub = conf["port"]
+    # broker_sub = conf["test_broker"]
+    # port_sub = conf["port"]
     topic_sub = conf["baseTopic"]["humidity"][1]+str(serviceID)
-    humidity_control_sub = humidity_control_sub("humidity_control_sub"+str(serviceID), topic_sub, broker_sub, port_sub, watering)
+    humidity_control_sub = humidity_control_sub("humidity_control_sub"+str(serviceID), topic_sub, broker, port, watering)
     humidity_control_sub.start() # subscript command from humidity
 
-    broker_sub = conf["test_broker"]
-    port_sub = conf["port"]
+    # broker_sub = conf["test_broker"]
+    # port_sub = conf["port"]
     topic_sub = conf["baseTopic"]["temperature"][1]+str(serviceID)
-    temperature_control_sub = temperature_control_sub("temperature_control_sub"+str(serviceID), topic_sub, broker_sub, port_sub, heating, cooling)
+    temperature_control_sub = temperature_control_sub("temperature_control_sub"+str(serviceID), topic_sub, broker, port, heating, cooling)
     temperature_control_sub.start() # subscript command from temperature
 
-    broker_sub = conf["test_broker"]
-    port_sub = conf["port"]
+    # broker_sub = conf["test_broker"]
+    # port_sub = conf["port"]
     topic_sub = conf["baseTopic"]["feeding"][1]+str(serviceID)
-    fertilizer_control_sub = fertilizer_control_sub("fertilizer_control_sub"+str(serviceID), topic_sub, broker_sub, port_sub, fertilizer)
+    fertilizer_control_sub = fertilizer_control_sub("fertilizer_control_sub"+str(serviceID), topic_sub, broker, port, fertilizer)
     fertilizer_control_sub.start() # subscript command from temperature
 
     # for TS_adapter part publish
-    broker=conf["test_broker"]
-    port=conf["port"]
+    # broker=conf["test_broker"]
+    # port=conf["port"]
     topic = conf["baseTopic"]["TS_adapter"][0]+str(serviceID)
     TS_humidity_pub = TS_humidity_pub("TS_humidity_pub"+str(serviceID),topic,broker,port)
     TS_humidity_pub.client.start()
 
-    broker=conf["test_broker"]
-    port=conf["port"]
+    # broker=conf["test_broker"]
+    # port=conf["port"]
     topic = conf["baseTopic"]["TS_adapter"][1]+str(serviceID)
     TS_temperature_pub = TS_temperature_pub("TS_temperature_pub"+str(serviceID),topic,broker,port)
     TS_temperature_pub.client.start()
 
     # for statistic part publish
-    broker=conf["test_broker"]
-    port=conf["port"]
+    # broker=conf["test_broker"]
+    # port=conf["port"]
     topic = conf["baseTopic"]["statistic_humidity"][0]+str(serviceID)
     statistic_humidity_pub = statistic_humidity_pub("statistic_humidity_pub"+str(serviceID),topic,broker,port)
     statistic_humidity_pub.client.start()
 
-    broker=conf["test_broker"]
-    port=conf["port"]
+    # broker=conf["test_broker"]
+    # port=conf["port"]
     topic = conf["baseTopic"]["statistic_temperature"][0]+str(serviceID)
     statistic_temperature_pub = statistic_temperature_pub("statistic_temperature_pub"+str(serviceID),topic,broker,port)
     statistic_temperature_pub.client.start()
    
 
     # service register uri and service delete uri
-    registration_uri = "http://0.0.0.0:8888/registrationServie"
-    delete_uri = "http://0.0.0.0:8888/deleteService"
+    registration_uri = "http://192.168.1.14:8888/registrationServie"
+    delete_uri = "http://192.168.1.14:8888/deleteService"
     # service information
     data = {"service":"raspberry" + str(serviceID), "port":webport}
 
