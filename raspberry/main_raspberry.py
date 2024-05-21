@@ -86,16 +86,38 @@ if __name__ == "__main__":
             for a in range(40):
                 if sensor_setting['SensorPort'][i] == str(a):
                     print(sensor_setting['SensorPort'][i])
-                    if a == 18:
+                    if a == 17:
+                        dht_device.append(adafruit_dht.DHT11(board.D17))
+                    elif a== 18:
                         dht_device.append(adafruit_dht.DHT11(board.D18))
-                    # elif a== 2:
-                    #     dht_device.append(adafruit_dht.DHT11(board.D2))
-                    # elif a== 3:
-                    #     dht_device.append(adafruit_dht.DHT11(board.D3))
-                    # elif a== 4:
-                    #     dht_device.append(adafruit_dht.DHT11(board.D4))
-                    # elif a == 18:
-                    #     dht_device.append(adafruit_dht.DHT11(board.D18))
+                    elif a== 27:
+                        dht_device.append(adafruit_dht.DHT11(board.D27))
+                    elif a== 22:
+                        dht_device.append(adafruit_dht.DHT11(board.D22))
+                    elif a== 23:
+                        dht_device.append(adafruit_dht.DHT11(board.D23))
+                    elif a== 24:
+                        dht_device.append(adafruit_dht.DHT11(board.D24))
+                    elif a== 25:
+                        dht_device.append(adafruit_dht.DHT11(board.D25))
+                    elif a== 5:
+                        dht_device.append(adafruit_dht.DHT11(board.D5))
+                    elif a== 6:
+                        dht_device.append(adafruit_dht.DHT11(board.D6))
+                    elif a== 12:
+                        dht_device.append(adafruit_dht.DHT11(board.D12))
+                    elif a== 13:
+                        dht_device.append(adafruit_dht.DHT11(board.D13))
+                    elif a== 19:
+                        dht_device.append(adafruit_dht.DHT11(board.D19))
+                    elif a== 26:
+                        dht_device.append(adafruit_dht.DHT11(board.D26))
+                    elif a== 16:
+                        dht_device.append(adafruit_dht.DHT11(board.D16))
+                    elif a == 20:
+                        dht_device.append(adafruit_dht.DHT11(board.D20))
+                    elif a == 21:
+                        dht_device.append(adafruit_dht.DHT11(board.D21))
 
         print(dht_device)
     except:
