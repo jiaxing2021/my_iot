@@ -1,1 +1,1 @@
-{"bn": "ServiceList", "e": []}
+{"bn": "ServiceList", "e": [{"service": "telegrambot", "port": 8000}]}
