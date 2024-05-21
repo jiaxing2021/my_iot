@@ -7,14 +7,14 @@ import time
 
 if __name__ == "__main__":
 
-    get_time_uri = "http://0.0.0.0:8888/getTime"
+    get_time_uri = "http://192.168.1.14:8888/getTime"
     response = requests.get(get_time_uri)
     timeDic = response.json()
     time_ = eval(timeDic["Timer"][0]["Timer"])
     
     # check how many raspberry services existing in catalog
     try:
-        get_service_list_uri = "http://0.0.0.0:8888/getServiceList"
+        get_service_list_uri = "http://192.168.1.14:8888/getServiceList"
         response = requests.get(get_service_list_uri)
         serviceListDic = response.json()
         ServiceList = serviceListDic["e"] # return service list
@@ -56,7 +56,7 @@ if __name__ == "__main__":
     cherrypy.engine.stop()
     cherrypy.engine.start()
 
-    get_broker_uri = "http://0.0.0.0:8888/getBrocker"
+    get_broker_uri = "http://192.168.1.14:8888/getBrocker"
     res = requests.get(get_broker_uri)
     conf = res.json()
     broker = conf["test_broker"]
@@ -65,8 +65,8 @@ if __name__ == "__main__":
     time_scheduler = time_scheduler("time_chedular"+str(serviceID), topic_sub, broker, port,time_)
     time_scheduler.client.start()
 
-    delete_uri = "http://0.0.0.0:8888/deleteService"
-    registration_uri = "http://0.0.0.0:8888/registrationServie"
+    delete_uri = "http://192.168.1.14:8888/deleteService"
+    registration_uri = "http://192.168.1.14:8888/registrationServie"
     data = {"service":"time_schedular" + str(serviceID), "port":webport}
     # register service
     response = requests.post(registration_uri,json = data)

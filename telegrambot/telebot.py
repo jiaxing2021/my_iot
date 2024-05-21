@@ -49,6 +49,13 @@ class RESTBot:
         message = msg['text']
 
         if message == '/start':
+            
+            currentFarmUri = "http://192.168.1.14:8888/getCurrentFarm"
+            req = requests.get(currentFarmUri)
+            currentFarmJson = req.json()
+            self.currentFarmID = currentFarmJson['CurrentFarm'][0]['farmID']
+            self.currentFarmName = currentFarmJson['CurrentFarm'][0]['farmName']
+
             farmInfo = "The current farmID is " + str(self.currentFarmID) + " and the farm name is " + str(self.currentFarmName)
 
             buttons = [

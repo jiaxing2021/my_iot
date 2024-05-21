@@ -82,7 +82,7 @@ class humidity_pred:
 
         # retrive information of the activated farm
         try:
-            get_activated_farm_uri = "http://0.0.0.0:8888/getActivatedFarm"
+            get_activated_farm_uri = "http://192.168.1.14:8888/getActivatedFarm"
             response = requests.get(get_activated_farm_uri)
             farmDic = response.json()
             farmList = farmDic["e"]
@@ -92,7 +92,7 @@ class humidity_pred:
             print("Wrong!")
 
         # register prediction on catalog
-        registration_humidity_uri = "http://0.0.0.0:8888/addHumidityPredicted"
+        registration_humidity_uri = "http://192.168.1.14:8888/addHumidityPredicted"
         predicted_humidity_data = {"farmID":this_farm['farmID'],
                         "farmName":this_farm['farmName'],
                         "value":[pred_humidity],

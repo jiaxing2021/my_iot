@@ -36,7 +36,7 @@ class temperature:
         self.temperature = d['temperature']
 
         try:
-            get_activated_farm_uri = "http://0.0.0.0:8888/getActivatedFarm"
+            get_activated_farm_uri = "http://192.168.1.14:8888/getActivatedFarm"
             response = requests.get(get_activated_farm_uri)
             farmDic = response.json()
             farmList = farmDic["e"]
@@ -46,7 +46,7 @@ class temperature:
             print("Wrong!")
 
         # register humidity on catalog
-        registration_temperature_uri = "http://0.0.0.0:8888/addTemperature"
+        registration_temperature_uri = "http://192.168.1.14:8888/addTemperature"
         temperature_data = {"farmID":this_farm['farmID'],
                         "farmName":this_farm['farmName'],
                         "value":[self.temperature],
@@ -83,7 +83,7 @@ class temperature:
 
         # retrive predicted temperatre
         try:
-            get_activated_farm_uri = "http://0.0.0.0:8888/getTemperaturePred"
+            get_activated_farm_uri = "http://192.168.1.14:8888/getTemperaturePred"
             response = requests.get(get_activated_farm_uri)
             farmDic = response.json()
             farmList = farmDic["e"]
@@ -127,7 +127,7 @@ class temperature:
                 json.dump(dic, file)
 
         # register mechanism status
-        registration_mechanism_uri = "http://0.0.0.0:8888/addMechanismStatus"
+        registration_mechanism_uri = "http://192.168.1.14:8888/addMechanismStatus"
         mechanism_data = {"farmID":this_farm['farmID'],
                         "farmName":this_farm['farmName'],
                         "mechanism":"heating and cooling",

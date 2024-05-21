@@ -38,7 +38,7 @@ class humidity:
 
         # retrive information of the activated farm
         try:
-            get_activated_farm_uri = "http://0.0.0.0:8888/getActivatedFarm"
+            get_activated_farm_uri = "http://192.168.1.14:8888/getActivatedFarm"
             response = requests.get(get_activated_farm_uri)
             farmDic = response.json()
             farmList = farmDic["e"]
@@ -48,7 +48,7 @@ class humidity:
             print("Wrong!")
 
         # register humidity on catalog
-        registration_humidity_uri = "http://0.0.0.0:8888/addHumidity"
+        registration_humidity_uri = "http://192.168.1.14:8888/addHumidity"
         humidity_data = {"farmID":this_farm['farmID'],
                         "farmName":this_farm['farmName'],
                         "value":[self.humid],
@@ -86,7 +86,7 @@ class humidity:
 
         # retrive predicted humidity
         try:
-            get_activated_farm_uri = "http://0.0.0.0:8888/getHumidityPred"
+            get_activated_farm_uri = "http://192.168.1.14:8888/getHumidityPred"
             response = requests.get(get_activated_farm_uri)
             farmDic = response.json()
             farmList = farmDic["e"]
@@ -131,7 +131,7 @@ class humidity:
         print(command)
 
         # register mechanism status
-        registration_mechanism_uri = "http://0.0.0.0:8888/addMechanismStatus"
+        registration_mechanism_uri = "http://192.168.1.14:8888/addMechanismStatus"
         mechanism_data = {"farmID":this_farm['farmID'],
                         "farmName":this_farm['farmName'],
                         "mechanism":"watering",

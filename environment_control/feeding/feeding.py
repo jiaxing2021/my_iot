@@ -45,7 +45,7 @@ class feeding:
 
                 # retrive information of the activated farm
         try:
-            get_activated_farm_uri = "http://0.0.0.0:8888/getActivatedFarm"
+            get_activated_farm_uri = "http://192.168.1.14:8888/getActivatedFarm"
             response = requests.get(get_activated_farm_uri)
             farmDic = response.json()
             farmList = farmDic["e"]
@@ -55,7 +55,7 @@ class feeding:
             print("Wrong!")
 
         # register mechanism status
-        registration_mechanism_uri = "http://0.0.0.0:8888/addMechanismStatus"
+        registration_mechanism_uri = "http://192.168.1.14:8888/addMechanismStatus"
         mechanism_data = {"farmID":this_farm['farmID'],
                         "farmName":this_farm['farmName'],
                         "mechanism":"fertilizer",

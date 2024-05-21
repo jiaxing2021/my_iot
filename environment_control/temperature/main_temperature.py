@@ -9,7 +9,7 @@ if __name__ == "__main__":
 
     # check how many temperature services existing in catalog
     try:
-        get_service_list_uri = "http://0.0.0.0:8888/getServiceList"
+        get_service_list_uri = "http://192.168.1.14:8888/getServiceList"
         response = requests.get(get_service_list_uri)
         serviceListDic = response.json()
         ServiceList = serviceListDic["e"] # return service list
@@ -51,7 +51,7 @@ if __name__ == "__main__":
     cherrypy.engine.stop()
     cherrypy.engine.start()
 
-    get_broker_uri = "http://0.0.0.0:8888/getBrocker"
+    get_broker_uri = "http://192.168.1.14:8888/getBrocker"
     res = requests.get(get_broker_uri)
     conf = res.json()
 
@@ -63,8 +63,8 @@ if __name__ == "__main__":
     temperature.start()
 
     # register service
-    delete_uri = "http://0.0.0.0:8888/deleteService"
-    registration_uri = "http://0.0.0.0:8888/registrationServie"
+    delete_uri = "http://192.168.1.14:8888/deleteService"
+    registration_uri = "http://192.168.1.14:8888/registrationServie"
     data = {"service":"temperature" + str(serviceID), "port":webport}
     response = requests.post(registration_uri,json = data)
 

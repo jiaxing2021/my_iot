@@ -87,7 +87,7 @@ class temperature_pred:
 
         # retrive information of the activated farm
         try:
-            get_activated_farm_uri = "http://0.0.0.0:8888/getActivatedFarm"
+            get_activated_farm_uri = "http://192.168.1.14:8888/getActivatedFarm"
             response = requests.get(get_activated_farm_uri)
             farmDic = response.json()
             farmList = farmDic["e"]
@@ -97,7 +97,7 @@ class temperature_pred:
             print("Wrong!")
 
         # register predicrion on catalog
-        registration_temperature_uri = "http://0.0.0.0:8888/addTemperaturePredicted"
+        registration_temperature_uri = "http://192.168.1.14:8888/addTemperaturePredicted"
         predicted_temperature_data = {"farmID":this_farm['farmID'],
                         "farmName":this_farm['farmName'],
                         "value":[pred_temperature],

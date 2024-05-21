@@ -8,7 +8,7 @@ if __name__ == "__main__":
 
     # check how many raspberry services existing in catalog
     try:
-        get_service_list_uri = "http://0.0.0.0:8888/getServiceList"
+        get_service_list_uri = "http://192.168.1.14:8888/getServiceList"
         response = requests.get(get_service_list_uri)
         serviceListDic = response.json()
         ServiceList = serviceListDic["e"] # return service list
@@ -51,7 +51,7 @@ if __name__ == "__main__":
     cherrypy.engine.stop()
     cherrypy.engine.start()
 
-    get_broker_uri = "http://0.0.0.0:8888/getBrocker"
+    get_broker_uri = "http://192.168.1.14:8888/getBrocker"
     res = requests.get(get_broker_uri)
     conf = res.json()
     broker = conf["test_broker"]
@@ -61,8 +61,8 @@ if __name__ == "__main__":
     feeding = feeding("feeding"+str(serviceID), topic_sub,topic_pub, broker, port, serviceID)
     feeding.start()
 
-    delete_uri = "http://0.0.0.0:8888/deleteService"
-    registration_uri = "http://0.0.0.0:8888/registrationServie"
+    delete_uri = "http://192.168.1.14:8888/deleteService"
+    registration_uri = "http://192.168.1.14:8888/registrationServie"
     data = {"service":"feeding" + str(serviceID), "port":webport}
     # register service
     response = requests.post(registration_uri,json = data)
