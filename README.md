@@ -1,6 +1,7 @@
 # IOT project
 
 ## catalog servers to register farm information, sensor settings, services and also allows other services restrieve information from it.
+## Register any necessary information before runing other services.
 ![img](./catalog.png)
 ### Add Farm is to register farm 
 ### Change Farm is to change the current farm and actiaveted farm, the inputed Farm ID must be the member of farms have been activated in the catalog.
