@@ -11,3 +11,7 @@
 ### Delete Farm is to delete the farm that has been registered in catalog
 ## Raspbeery connector, Raspberry.py, severs to read environmental information (temperature and humidity) from environment. And it also publish such information to ThingSpeak Adapter,humidity temperature statistic part (humidity predicter and temperature predicter)
 
+## The data used to train the NNs are simulated with sinusoidal function. And accounding to the test result, this training dataset works because the NNs just remember the partern rather than the number is they are not over-fitting. 
+
+![img](./results.png)
+### Even though the about 1% error is inevitable in the real usage, the performance of NNs are acceptable.
