@@ -417,9 +417,10 @@ class catalog:
             if command == 'deleteFarm':
                 dic = json.loads(cherrypy.request.body.read())
                 deteledID = dic['deletedID']
+                print(deteledID)
                 with open("farmList.json") as farmListDic:
                     farmListDic = json.load(farmListDic)
-                    farmList = farmListDic["farmList"]  # list
+                    farmList = farmListDic["e"]  # list
                 with open("sensors.json") as sensorsListDic:
                     sensorsListDic = json.load(sensorsListDic)
                     sensorsList = sensorsListDic["sensors"]  # list
@@ -428,8 +429,8 @@ class catalog:
                     if farmList[i]["farmID"] == deteledID:
                         farmList.pop(i) # new list
                         break
-                farmListDic["farmList"] = farmList
-                with open('FarmList.json','w') as file:
+                farmListDic["e"] = farmList
+                with open('farmList.json','w') as file:
                     json.dump(farmListDic, file)
 
                 for i in range(len(sensorsList)):

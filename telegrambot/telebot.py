@@ -40,7 +40,22 @@ class RESTBot:
 
     def on_chat_message(self, msg):
         content_type, chat_type, chat_ID = telepot.glance(msg)
+
+        getFarmList_uri = "http://192.168.1.14:8888/getFarmList"
+        response = requests.get(getFarmList_uri)
+        farmListJson = response.json()
+        farmList = farmListJson['e']
+
+        farmListInfo = ""
+
+        for i in farmList:
+            ID = i["farmID"]
+            name = i["farmName"]
+            farmListInfo += f"{ID} {name} \n"
         
+        farmListInfo = f"There are {len(farmList)} farms. They are \n" + farmListInfo
+
+       
         # regster chatID in catalog
         registrationChatID_uri = "http://192.168.1.14:8888/addChatID"
         chatIDData = {'chatID':chat_ID}
@@ -57,6 +72,8 @@ class RESTBot:
             self.currentFarmName = currentFarmJson['CurrentFarm'][0]['farmName']
 
             farmInfo = "The current farmID is " + str(self.currentFarmID) + " and the farm name is " + str(self.currentFarmName)
+
+            farmInfo = farmListInfo + farmInfo
 
             buttons = [
                     [InlineKeyboardButton(text=f'Watering ON 🟡', callback_data=f'Wateron'), 
