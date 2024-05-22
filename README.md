@@ -23,7 +23,9 @@ Delete Farm is to delete the farm that has been registered in catalog and it als
 ## Raspberry connector
 Raspberry serves to read environmental information (temperature and humidity) from environment. And it also publish such information to ThingSpeak Adapter,humidity temperature statistic part (humidity predicter and temperature predicter). it also subscribe the cammand from environement control part to control watering, heating, cooling and fertilizer mechanisms.
 
-Raspberry could be mapped to the activated farm automaticaly according to the starting order. For example, if in activated farm list, the first farm is the farm with ID 2 the second farm is the farm with ID 3, the first started raspberry would be mapped to the the farm with ID 2 and the second started raspberry would be mapped to the farm with ID 3. According to the farm ID, raspberry retrieve the sensors settings from catalog. Environment control part do so.
+Raspberry could be mapped to the activated farm automaticaly according to the starting order. For example, if in activated farm list, the first farm is the farm with ID 2 the second farm is the farm with ID 3, the first started raspberry would be mapped to the the farm with ID 2 and the second started raspberry would be mapped to the farm with ID 3. According to the farm ID, raspberry retrieve the sensors settings from catalog. Environment control part do so. 
+
+In the demo vide, to show the difference, the values of the second raspberry plus 10. That is, if the real data is 29 for the first raspberry, for the second raspberry, the value is 39. This helps to verify the system works well when more than one raspberry and environment control services existing.
 
 The actuators ports settings are predefined.
 
