@@ -3,10 +3,10 @@
     "local_broker":"localhost",
     "test_broker":"192.168.1.14",
     "port": 1883,
-    "baseTopic": {"humidity":["humidity","humidity_control"],
-                "temperature":["temperature","temperature_control"],
-                "statistic_humidity":["statistic_humidity","statistic_humidity_control"],
-                "statistic_temperature":["statistic_temperature","statistic_temperature_control"],
-                "feeding":["timer","feeding_control"],
-                "TS_adapter":["TS_humidity","TS_Temperature","TS_humidity_pred","TS_Temperature_pred"]}
+    "baseTopic": {"humidity":["iot/humidity","iot/humidity_control"],
+                "temperature":["iot/temperature","iot/temperature_control"],
+                "statistic_humidity":["iot/statistic_humidity","iot/statistic_humidity_control"],
+                "statistic_temperature":["iot/statistic_temperature","iot/statistic_temperature_control"],
+                "feeding":["iot/timer","iot/feeding_control"],
+                "TS_adapter":["iot/TS_humidity","iot/TS_Temperature","iot/TS_humidity_pred","iot/TS_Temperature_pred"]}
 }
