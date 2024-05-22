@@ -16,7 +16,7 @@ if __name__ == "__main__":
         count = []
         for i in range(len(ServiceList)):
             # print(ServiceList[i]['service'][0:9])
-            if ServiceList[i]['service'][0:11] == 'temperature':
+            if ServiceList[i]['service'][0:11] == 'temperature' and len(ServiceList[i]['service']) < 13:
                 count.append(ServiceList[i]['service'][11:])
         flag = True
         for j in range(len(count)):
