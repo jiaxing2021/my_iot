@@ -5,6 +5,7 @@
 Catalog serves to register farm information (ID and name), sensor settings, services and also allows other services restrieve information from it. And also check any offline service and delete it from catalog.
 
 Register any necessary information before runing other services.
+
 ![img](./catalog.png)
 
 Add Farm is to register farm with specifying the farm ID and farm Name.
