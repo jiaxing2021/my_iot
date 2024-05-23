@@ -72,8 +72,15 @@ if __name__ == "__main__":
     response = requests.post(registration_uri,json = data)
 
     while True:
+        get_time_uri = "http://192.168.1.14:8888/getTime"
+        response = requests.get(get_time_uri)
+        timeDic = response.json()
+        time_ = eval(timeDic["Timer"][0]["Timer"])
+
+        time.sleep(time_)
+
         time_scheduler.publish()
-        time.sleep(3)
+
 
     # press space to stop the service and delete it from catalog
         # if keyboard.is_pressed('space'):

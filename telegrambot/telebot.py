@@ -71,6 +71,15 @@ class RESTBot:
             self.currentFarmID = currentFarmJson['CurrentFarm'][0]['farmID']
             self.currentFarmName = currentFarmJson['CurrentFarm'][0]['farmName']
 
+            ActivatedFarmUri = "http://192.168.1.14:8888/getActivatedFarm"
+            req = requests.get(ActivatedFarmUri)
+            ActivatedFarmList = req.json()['e']
+
+            for i in range(len(ActivatedFarmList)):
+                if ActivatedFarmList[i]['farmID'] == self.currentFarmID:
+                    self.serviceID = i
+                    break
+
             farmInfo = "The current farmID is " + str(self.currentFarmID) + " and the farm name is " + str(self.currentFarmName)
 
             farmInfo = farmListInfo + farmInfo

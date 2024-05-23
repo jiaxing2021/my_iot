@@ -8,7 +8,7 @@ humidity : 2000
 temperature : 3000
 humidity_pred : 4000
 temperature_pred : 5000
-timeschedular : 6000s
+timeschedular : 6000
 feeding : 7000
 
 """
