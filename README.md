@@ -18,7 +18,7 @@ timer is to change the time interval for time scheduler for activating feeding m
 
 Sensor settings is to change the settings of senors, DH11. The sensor number must match the number of sensor ports.
 
-Delete Farm is to delete the farm that has been registered in catalog and it alse delete the sensor setting related to the deleted farm.
+Delete Farm is to delete the farm that has been registered in catalog and it alse delete the sensor setting related to the deleted farm. Don't not delete the farm has been activated.
 
 ## Raspberry connector
 Raspberry serves to read environmental information (temperature and humidity) from environment. And it also publish such information to ThingSpeak Adapter,humidity temperature statistic part (humidity predicter and temperature predicter). it also subscribe the cammand from environement control part to control watering, heating, cooling and fertilizer mechanisms.

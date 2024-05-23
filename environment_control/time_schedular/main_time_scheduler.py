@@ -21,7 +21,7 @@ if __name__ == "__main__":
         count = []
         for i in range(len(ServiceList)):
             # print(ServiceList[i]['service'][0:9])
-            if ServiceList[i]['service'][0:14] == 'time_scheduler':
+            if ServiceList[i]['service'][0:14] == 'time_schedular':
                 count.append(ServiceList[i]['service'][14:])
         flag = True
         for j in range(len(count)):
