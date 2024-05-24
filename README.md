@@ -1,5 +1,8 @@
 # IOT project
 
+## demo video https://www.youtube.com/watch?v=o0C8PxMvqms
+## promo video https://www.youtube.com/watch?v=gZXr_3nwHbs
+
 ## catalog (all other parts should be started after finishing setting)
 
 Catalog serves to register farm information (ID and name), sensor settings, services and also allows other services restrieve information from it. And also check any offline service and delete it from catalog.
